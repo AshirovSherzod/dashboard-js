@@ -1,59 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="icon" href="./assets/images/tab-icon.png" type="img/png">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+    <link rel="icon" href="./assets/images/tab-icon.png" type="img/png" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<body>
+  <body>
     <main class="login">
-        <section class="login-sect">
-            <div class="login-sect__title">
-                <h1>Welcome Back</h1>
-                <p>Sign in to your account</p>
+      <section class="login-sect">
+        <div class="login-sect__title">
+          <h1>Welcome Back</h1>
+          <p>Sign in to your account</p>
+        </div>
+        <form class="login-sect__form" action="">
+          <div class="login-sect__form-username">
+            <label for="">Email</label>
+            <input
+              name="username"
+              autocomplete="username"
+              class="username-input"
+              placeholder="Enter username or email"
+              type="text"
+            />
+          </div>
+          <div class="login-sect__form-password">
+            <label for="">Password</label>
+            <div class="login-sect__form-password__input">
+              <input
+                name="password"
+                autocomplete="current-password"
+                placeholder="Enter Password"
+                type="password"
+                class="password-input"
+              />
+              <button type="button" class="password-btn">
+                <i class="fa-regular fa-eye"></i>
+              </button>
             </div>
-            <form class="login-sect__form" action="">
-                <div class="login-sect__form-username">
-                    <label for="">Email</label>
-                    <input name="username" autocomplete="username" class="username-input"
-                        placeholder="Enter username or email" type="text" />
-                </div>
-                <div class="login-sect__form-password">
-                    <label for="">Password</label>
-                    <div class="login-sect__form-password__input">
-                        <input name="password" autocomplete="current-password" placeholder="Enter Password"
-                            type="password" class="password-input" />
-                        <button type="button" class="password-btn">
-                            <i class="fa-regular fa-eye"></i>
-                        </button>
-                    </div>
-                </div>
-                <button class="login-sect__form-btn">Login</button>
-            </form>
-            <div class="login-desc">
-                <p>Email: admin@gmail.com</p>
-                <p>Password: administhebest3467</p>
-            </div>
-        </section>
-        <section class="login-img">
-            <h2>
-                I am fully focused on my goals and consistently working every day to
-                improve myself and achieve long-term success.
-            </h2>
-            <div class="login-img__profile">
-                <p class="login-img__profile-img"><i class="fa-solid fa-circle-user"></i></p>
-                <p>@ashirovsherzod</p>
-            </div>
-        </section>
+          </div>
+          <button class="login-sect__form-btn">Login</button>
+        </form>
+        <div class="login-desc">
+          <p>Email: admin@gmail.com</p>
+          <p>Password: administhebest3467</p>
+        </div>
+      </section>
+      <section class="login-img">
+        <h2>
+          I am fully focused on my goals and consistently working every day to
+          improve myself and achieve long-term success.
+        </h2>
+        <div class="login-img__profile">
+          <p class="login-img__profile-img">
+            <i class="fa-solid fa-circle-user"></i>
+          </p>
+          <p>@ashirovsherzod</p>
+        </div>
+      </section>
     </main>
     <script src="./js/script.js"></script>
-</body>
-
+  </body>
 </html>
