@@ -1,138 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 .login {
-    width: 100%;
-    height: 100vh;
-    display: flex;
+  width: 100%;
+  height: 100vh;
+  display: flex;
 }
 
 .login-sect {
-    width: 39%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 35px;
-    background-color: white;
-    border-right: 1px solid gray;
-    padding-top: 100px;
+  width: 39%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 35px;
+  background-color: white;
+  border-right: 1px solid gray;
+  padding-top: 100px;
 }
 
 .login-sect__title {
-    width: 70%;
+  width: 70%;
 }
 
 .login-sect__form {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .login-sect__form-username,
 .login-sect__form-password {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .login-sect__form-password label,
 .login-sect__form-username label {
-    font-size: 0.8rem;
-    color: gray;
+  font-size: 0.8rem;
+  color: gray;
 }
 
 .login-sect__form-username input {
-    width: 100%;
-    height: 35px;
-    padding-left: 20px;
-    font-size: 0.9rem;
-    border-radius: 5px;
-    border: 1px solid gray;
+  width: 100%;
+  height: 35px;
+  padding-left: 20px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  border: 1px solid gray;
 }
 
 .login-sect__form-password__input {
-    width: 100%;
-    height: 35px;
-    position: relative;
-    border-radius: 5px;
-    border: 1px solid gray;
+  width: 100%;
+  height: 35px;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid gray;
 }
 
 .login-sect__form-password__input input {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    padding-left: 20px;
-    font-size: 0.9rem;
-    border: 1px solid transparent;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  padding-left: 20px;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
 }
 
 .login-sect__form-password__input button {
-    position: absolute;
-    top: 50%;
-    right: 1%;
-    width: 8%;
-    height: 80%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: 1px solid gray;
-    border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  right: 1%;
+  width: 8%;
+  height: 80%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 
 .login-sect__form-password__input button i {
-    color: gray;
+  color: gray;
 }
 
 .login-sect__form-btn {
-    width: 100%;
-    height: 35px;
-    background-color: #16c098;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: white;
+  width: 100%;
+  height: 35px;
+  background-color: #16c098;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: white;
 }
 
 .login-desc {
-    width: 70%;
-    padding-top: 35px;
-    border-top: 1px solid gray;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 10px;
-    color: gray;
-    font-size: 14px;
+  width: 70%;
+  padding-top: 35px;
+  border-top: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  color: gray;
+  font-size: 14px;
 }
 
 .login-img {
-    width: 61%;
-    background-color: #fafbff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+  width: 61%;
+  background-color: #fafbff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .login-img h2 {
-    width: 80%;
-    font-size: 2rem;
+  width: 80%;
+  font-size: 2rem;
 }
 
 .login-img__profile {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .login-img__profile-img {
-    font-size: 30px;
+  font-size: 30px;
 }
