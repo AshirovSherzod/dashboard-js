@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <meta name="theme-color" content="#f6f7fb" />
+    <title>Users · Dashboard</title>
     <link rel="icon" href="../assets/images/tab-icon.png" type="image/png" />
-    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/dashboard.css?v=3" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -16,83 +17,232 @@
   </head>
 
   <body>
-    <div class="sidebar">
-      <div class="sidebar-logo">
-        <span><i class="fa-solid fa-code"></i></span>
-        <h2>Dashboard</h2>
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="sidebar-brand">
+        <span class="brand-mark"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
+        <div>
+          <strong>Dashly</strong>
+          <span>Admin workspace</span>
+        </div>
       </div>
-      <div class="sidebar-pages">
-        <button type="button" class="sidebar-pages__users">
-          <span><i class="fa-solid fa-users"></i> </span>
-          <p>Users</p>
+
+      <div class="sidebar-section-label">Workspace</div>
+      <nav class="sidebar-pages">
+        <button type="button" class="sidebar-pages__users is-active">
+          <i class="fa-solid fa-users" aria-hidden="true"></i>
+          <span>Users</span>
+          <small>Live</small>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-help">
+          <span class="help-icon"><i class="fa-regular fa-circle-question" aria-hidden="true"></i></span>
+          <div>
+            <strong>Need help?</strong>
+            <span>Check the docs</span>
+          </div>
+        </div>
+        <button type="button" class="sidebar-mode" aria-label="Toggle dark mode">
+          <span><i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i> Appearance</span>
+          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
         </button>
       </div>
-      <button type="button" class="sidebar-mode" aria-label="Toggle dark mode">Mode</button>
-    </div>
+    </aside>
+
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+
     <main>
-      <div class="header">
-        <h1>Hello Admin👋,</h1>
-      </div>
-      <div class="users-main">
-        <div class="table-wrapper">
-          <div class="users-main__search">
-            <form class="search-form" action="">
-              <input
-                class="search-input"
-                aria-label="Search users by name"
-                placeholder="Enter a Name"
-                type="text"
-              />
-              <button type="submit" aria-label="Search users">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </form>
+      <header class="topbar">
+        <div class="topbar-heading">
+          <button type="button" class="mobile-menu" aria-label="Open navigation" aria-expanded="false">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+          <div>
+            <span class="eyebrow">Workspace overview</span>
+            <h1>Users management</h1>
+            <p>Manage your customers and keep your workspace organized.</p>
           </div>
-          <p class="table-message" role="status" aria-live="polite"></p>
+        </div>
+        <div class="topbar-actions">
+          <span class="current-date"></span>
+          <div class="notification-wrap">
+            <button type="button" class="icon-button notification-button" aria-label="Notifications" aria-expanded="false">
+              <i class="fa-regular fa-bell" aria-hidden="true"></i>
+              <span class="notification-dot"></span>
+            </button>
+            <div class="notification-popover" hidden>
+              <strong>You're all caught up</strong>
+              <span>No new notifications for this demo.</span>
+            </div>
+          </div>
+          <div class="profile-wrap">
+            <button type="button" class="admin-profile" aria-label="Open admin profile" aria-expanded="false">
+              <span class="admin-avatar">A</span>
+              <span class="admin-profile__copy">
+                <strong>Admin</strong>
+                <span>Administrator</span>
+              </span>
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="profile-popover" hidden>
+              <span class="profile-popover__label">Demo account</span>
+              <strong>Admin workspace</strong>
+              <span class="profile-popover__hint">This dashboard uses mock API data.</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="stats-grid" aria-label="Users overview">
+        <article class="stat-card">
+          <div class="stat-card__top">
+            <span class="stat-icon stat-icon--purple"><i class="fa-solid fa-users" aria-hidden="true"></i></span>
+            <span class="stat-trend"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i> Live</span>
+          </div>
+          <span class="stat-label">Visible users</span>
+          <strong class="stat-value" id="visible-users">—</strong>
+          <span class="stat-caption">Current result set</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-card__top">
+            <span class="stat-icon stat-icon--green"><i class="fa-solid fa-user-check" aria-hidden="true"></i></span>
+            <span class="stat-trend stat-trend--green">Active</span>
+          </div>
+          <span class="stat-label">Active users</span>
+          <strong class="stat-value" id="active-users">—</strong>
+          <span class="stat-caption">Ready to engage</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-card__top">
+            <span class="stat-icon stat-icon--orange"><i class="fa-solid fa-user-clock" aria-hidden="true"></i></span>
+            <span class="stat-trend stat-trend--orange">Review</span>
+          </div>
+          <span class="stat-label">Inactive users</span>
+          <strong class="stat-value" id="inactive-users">—</strong>
+          <span class="stat-caption">May need attention</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-card__top">
+            <span class="stat-icon stat-icon--blue"><i class="fa-solid fa-earth-americas" aria-hidden="true"></i></span>
+            <span class="stat-trend stat-trend--blue">Global</span>
+          </div>
+          <span class="stat-label">Countries reached</span>
+          <strong class="stat-value" id="country-count">—</strong>
+          <span class="stat-caption">Across visible users</span>
+        </article>
+      </section>
+
+      <section class="content-card" aria-labelledby="customers-title">
+        <div class="content-card__header">
+          <div>
+            <span class="eyebrow">Directory</span>
+            <h2 id="customers-title">Customer directory</h2>
+            <p>Review, update and manage customer access.</p>
+          </div>
+          <button type="button" class="secondary-button add-customer">
+            <i class="fa-solid fa-plus" aria-hidden="true"></i>
+            Add customer
+          </button>
+        </div>
+
+        <div class="table-toolbar">
+          <div class="toolbar-summary">
+            <span class="table-status-dot"></span>
+            <span>All customers</span>
+            <span class="toolbar-divider"></span>
+            <span class="result-count">Live data</span>
+          </div>
+          <form class="search-form" action="">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input class="search-input" aria-label="Search users by name" placeholder="Search by name..." type="search" />
+            <button type="submit" aria-label="Search users">Search</button>
+          </form>
+        </div>
+
+        <p class="table-message" role="status" aria-live="polite"></p>
+        <div class="table-scroll">
           <table>
+            <caption class="sr-only">Customer directory</caption>
             <thead>
               <tr>
-                <th scope="col">Customer Name</th>
-                <th scope="col">Phone Number</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Phone number</th>
                 <th scope="col">Email</th>
                 <th scope="col">Country</th>
                 <th scope="col">Status</th>
-                <th scope="col">Manage</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody></tbody>
           </table>
+          <div class="empty-state" hidden>
+            <span class="empty-state__icon"><i class="fa-solid fa-users-slash" aria-hidden="true"></i></span>
+            <h3 class="empty-title">No customers found</h3>
+            <p class="empty-description">Try a different search or clear the current filter.</p>
+            <button type="button" class="empty-reset">Clear search</button>
+          </div>
+        </div>
+
+        <div class="table-footer">
+          <span class="footer-note">Showing up to</span>
           <form class="limit-form" action="">
-            <label for="limit">Rows per page</label>
+            <label for="limit">Rows</label>
             <input class="limit-input" id="limit" type="number" min="1" max="100" value="10" />
             <button type="submit">Apply</button>
           </form>
         </div>
-      </div>
+      </section>
     </main>
-    <div class="modal" aria-hidden="true">
+
+    <div class="modal edit-modal" aria-hidden="true">
       <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="edit-title">
         <div class="modal-header">
-          <h2 id="edit-title">Edit user</h2>
-          <button type="button" class="modal-close" aria-label="Close edit dialog">&times;</button>
+          <div>
+            <span class="eyebrow">Customer directory</span>
+            <h2 id="edit-title">Edit customer</h2>
+          </div>
+          <button type="button" class="modal-close" aria-label="Close edit dialog"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
         </div>
         <form class="edit-form">
           <input type="hidden" class="edit-id" />
-          <label for="edit-name">Customer name</label>
-          <input id="edit-name" class="edit-name" type="text" required />
-          <label for="edit-phone">Phone number</label>
-          <input id="edit-phone" class="edit-phone" type="tel" required />
-          <label for="edit-email">Email</label>
-          <input id="edit-email" class="edit-email" type="email" required />
-          <label for="edit-country">Country</label>
-          <input id="edit-country" class="edit-country" type="text" required />
+          <div class="form-field">
+            <label for="edit-name">Customer name</label>
+            <input id="edit-name" class="edit-name" type="text" autocomplete="name" placeholder="Enter customer name" required />
+          </div>
+          <div class="form-field">
+            <label for="edit-phone">Phone number</label>
+            <input id="edit-phone" class="edit-phone" type="tel" autocomplete="tel" placeholder="Enter phone number" required />
+          </div>
+          <div class="form-field">
+            <label for="edit-email">Email</label>
+            <input id="edit-email" class="edit-email" type="email" autocomplete="email" placeholder="Enter email address" required />
+          </div>
+          <div class="form-field">
+            <label for="edit-country">Country</label>
+            <input id="edit-country" class="edit-country" type="text" autocomplete="country-name" placeholder="Enter country" required />
+          </div>
           <div class="modal-actions">
             <button type="button" class="modal-cancel">Cancel</button>
-            <button type="submit" class="modal-save">Save changes</button>
+            <button type="submit" class="modal-save"><i class="fa-solid fa-check" aria-hidden="true"></i> <span class="modal-save-label">Save changes</span></button>
           </div>
         </form>
       </div>
     </div>
-    <script type="module" src="../js/dashboard.js"></script>
+
+    <div class="modal confirm-modal" aria-hidden="true">
+      <div class="modal-content confirm-content" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+        <span class="confirm-icon"><i class="fa-solid fa-trash" aria-hidden="true"></i></span>
+        <h2 id="confirm-title">Delete customer?</h2>
+        <p class="confirm-message">This action cannot be undone.</p>
+        <div class="modal-actions">
+          <button type="button" class="confirm-cancel">Cancel</button>
+          <button type="button" class="confirm-delete"><i class="fa-solid fa-trash" aria-hidden="true"></i> Delete customer</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script type="module" src="../js/dashboard.js?v=3"></script>
   </body>
 </html>

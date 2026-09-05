@@ -1,7 +1,14 @@
 const API_URL = "https://686519fe5b5d8d03397fb476.mockapi.io/ap/v1/users";
 
 async function request(url, options = {}) {
-  const response = await fetch(url, options);
+  const requestOptions = { ...options };
+  const method = String(requestOptions.method ?? "GET").toUpperCase();
+
+  if (method === "GET") {
+    requestOptions.cache = "no-store";
+  }
+
+  const response = await fetch(url, requestOptions);
 
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}`);
@@ -50,10 +57,10 @@ export function putUsers(editedUser, id) {
   });
 }
 
-export function patchUsers(isActive, id) {
+export function updateUserStatus(user, id) {
   return request(`${API_URL}/${encodeURIComponent(id)}`, {
-    method: "PATCH",
+    method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(isActive),
+    body: JSON.stringify(user),
   });
 }
