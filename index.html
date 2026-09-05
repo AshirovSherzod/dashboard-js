@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo Dashboard Preview</title>
-    <link rel="icon" href="./assets/images/tab-icon.png" type="img/png" />
+    <link rel="icon" href="./assets/images/tab-icon.png" type="image/png" />
     <link rel="stylesheet" href="./css/style.css" />
     <link
       rel="stylesheet"
@@ -22,36 +22,37 @@
           <h1>Welcome Back</h1>
           <p>Demo Sign In</p>
         </div>
-        <form class="login-sect__form" action="">
+        <form class="login-sect__form" action="" novalidate>
           <div class="login-sect__form-username">
-            <label for="">Email</label>
+            <label for="username">Email</label>
             <input
+              id="username"
               name="username"
               autocomplete="username"
               class="username-input"
-              placeholder="Enter (Demo) username or email"
               placeholder="Enter username or email"
-              type="text"
+              type="email"
+              required
             />
           </div>
           <div class="login-sect__form-password">
-            <label for="">Demo Password</label>
-            <label for="">Password</label>
+            <label for="password">Password</label>
             <div class="login-sect__form-password__input">
               <input
+                id="password"
                 name="password"
                 autocomplete="current-password"
-                placeholder="Enter (Demo) Password"
                 placeholder="Enter Password"
                 type="password"
                 class="password-input"
+                required
               />
-              <button type="button" class="password-btn">
+              <button type="button" class="password-btn" aria-label="Show password">
                 <i class="fa-regular fa-eye"></i>
               </button>
             </div>
           </div>
-          <button class="login-sect__form-btn">Enter Demo</button>
+          <button type="submit" class="login-sect__form-btn">Enter Demo</button>
         </form>
         <div class="login-desc">
           <p>Demo Email: admin@gmail.com</p>

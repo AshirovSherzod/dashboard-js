@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="icon" href="../assets/images/tab-icon.png" type="img/png" />
+    <link rel="icon" href="../assets/images/tab-icon.png" type="image/png" />
     <link rel="stylesheet" href="../css/dashboard.css" />
     <link
       rel="stylesheet"
@@ -22,12 +22,12 @@
         <h2>Dashboard</h2>
       </div>
       <div class="sidebar-pages">
-        <button class="sidebar-pages__users">
+        <button type="button" class="sidebar-pages__users">
           <span><i class="fa-solid fa-users"></i> </span>
           <p>Users</p>
         </button>
       </div>
-      <button class="sidebar-exit"></button>
+      <button type="button" class="sidebar-mode" aria-label="Toggle dark mode">Mode</button>
     </div>
     <main>
       <div class="header">
@@ -39,29 +39,60 @@
             <form class="search-form" action="">
               <input
                 class="search-input"
+                aria-label="Search users by name"
                 placeholder="Enter a Name"
                 type="text"
               />
-              <button><i class="fa-solid fa-magnifying-glass"></i></button>
+              <button type="submit" aria-label="Search users">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
             </form>
           </div>
+          <p class="table-message" role="status" aria-live="polite"></p>
           <table>
             <thead>
               <tr>
-                <th>Customer Name</th>
-                <th>Phone Number</th>
-                <th>Email</th>
-                <th>Country</th>
-                <th>Status</th>
-                <th>Manage</th>
-                <th></th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Email</th>
+                <th scope="col">Country</th>
+                <th scope="col">Status</th>
+                <th scope="col">Manage</th>
               </tr>
             </thead>
             <tbody></tbody>
           </table>
+          <form class="limit-form" action="">
+            <label for="limit">Rows per page</label>
+            <input class="limit-input" id="limit" type="number" min="1" max="100" value="10" />
+            <button type="submit">Apply</button>
+          </form>
         </div>
       </div>
     </main>
+    <div class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="edit-title">
+        <div class="modal-header">
+          <h2 id="edit-title">Edit user</h2>
+          <button type="button" class="modal-close" aria-label="Close edit dialog">&times;</button>
+        </div>
+        <form class="edit-form">
+          <input type="hidden" class="edit-id" />
+          <label for="edit-name">Customer name</label>
+          <input id="edit-name" class="edit-name" type="text" required />
+          <label for="edit-phone">Phone number</label>
+          <input id="edit-phone" class="edit-phone" type="tel" required />
+          <label for="edit-email">Email</label>
+          <input id="edit-email" class="edit-email" type="email" required />
+          <label for="edit-country">Country</label>
+          <input id="edit-country" class="edit-country" type="text" required />
+          <div class="modal-actions">
+            <button type="button" class="modal-cancel">Cancel</button>
+            <button type="submit" class="modal-save">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
     <script type="module" src="../js/dashboard.js"></script>
   </body>
 </html>
