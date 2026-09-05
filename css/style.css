@@ -138,3 +138,44 @@
 .login-img__profile-img {
   font-size: 30px;
 }
+
+@media (max-width: 768px) {
+  .login {
+    min-height: 100dvh;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .login-sect,
+  .login-img {
+    width: 100%;
+  }
+
+  .login-sect {
+    min-height: 100dvh;
+    height: auto;
+    padding: 60px 20px;
+  }
+
+  .login-sect__title,
+  .login-sect__form,
+  .login-desc,
+  .login-img h2,
+  .login-img__profile {
+    width: 100%;
+  }
+
+  .login-desc {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .login-img {
+    min-height: 300px;
+    padding: 40px 20px;
+  }
+
+  .login-img h2 {
+    font-size: 1.4rem;
+  }
+}

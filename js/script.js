@@ -7,24 +7,26 @@ passwordBtn.addEventListener("click", () => {
   if (passwordInp.type === "password") {
     passwordInp.type = "text";
     passwordBtn.innerHTML = `<i class="fa-regular fa-eye-slash"></i>`;
+    passwordBtn.setAttribute("aria-label", "Hide password");
   } else {
     passwordInp.type = "password";
     passwordBtn.innerHTML = `<i class="fa-regular fa-eye"></i>`;
+    passwordBtn.setAttribute("aria-label", "Show password");
   }
 });
 
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const username = usernameInput.value;
+  const username = usernameInput.value.trim().toLowerCase();
   const password = passwordInp.value;
 
-  if (username === "" || password === "") {
+  if (!loginForm.checkValidity() || username === "" || password === "") {
     alert("Please fill in all fields");
     return;
   }
 
   if (username === "admin@gmail.com" && password === "administhebest3467") {
-    window.location.href = "../pages/dashboard.html";
+    window.location.href = "./pages/dashboard.html";
     return;
   } else {
     alert("Invalid username or password");
