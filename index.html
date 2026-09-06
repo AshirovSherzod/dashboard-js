@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demo Dashboard Preview</title>
+    <meta name="theme-color" content="#11141c" />
+    <title>Sign in - Dashly</title>
     <link rel="icon" href="./assets/images/tab-icon.png" type="image/png" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.css?v=2" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -15,64 +16,118 @@
     />
   </head>
 
-  <body>
-    <main class="login">
-      <section class="login-sect">
-        <div class="login-sect__title">
-          <h1>Welcome Back</h1>
-          <p>Demo Sign In</p>
-        </div>
-        <form class="login-sect__form" action="" novalidate>
-          <div class="login-sect__form-username">
-            <label for="username">Email</label>
-            <input
-              id="username"
-              name="username"
-              autocomplete="username"
-              class="username-input"
-              placeholder="Enter username or email"
-              type="email"
-              required
-            />
+  <body class="login-page">
+    <main class="login-shell">
+      <section class="login-panel" aria-labelledby="login-title">
+        <div class="login-panel__content">
+          <a class="login-brand" href="./index.html" aria-label="Dashly home">
+            <span class="brand-mark"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
+            <span class="login-brand__copy">
+              <strong>Dashly</strong>
+              <span>Admin workspace</span>
+            </span>
+          </a>
+
+          <div class="login-heading">
+            <span class="eyebrow">Welcome back</span>
+            <h1 id="login-title">Sign in to your workspace</h1>
+            <p>Keep your customer directory organized from one clear dashboard.</p>
           </div>
-          <div class="login-sect__form-password">
-            <label for="">Demo Password</label>
-            <div class="login-sect__form-password__input">
-              <input
-                id="password"
-                name="password"
-                autocomplete="current-password"
-                placeholder="Enter Password"
-                type="password"
-                class="password-input"
-                required
-              />
-              <button
-                type="button"
-                class="password-btn"
-                aria-label="Show password"
-              >
-                <i class="fa-regular fa-eye"></i>
-              </button>
+
+          <form class="login-sect__form" action="" novalidate>
+            <div class="login-field">
+              <label for="username">Email address</label>
+              <div class="login-input-wrap">
+                <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                <input id="username" name="username" autocomplete="username" class="username-input" placeholder="admin@gmail.com" type="email" required />
+              </div>
+            </div>
+
+            <div class="login-field">
+              <div class="login-field__label-row">
+                <label for="password">Password</label>
+                <span>Demo access</span>
+              </div>
+              <div class="login-input-wrap">
+                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                <input id="password" name="password" autocomplete="current-password" placeholder="Enter your password" type="password" class="password-input" required />
+                <button type="button" class="password-btn" aria-label="Show password">
+                  <i class="fa-regular fa-eye" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="login-form-meta">
+              <span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Frontend preview</span>
+              <span>Secure demo flow</span>
+            </div>
+
+            <button type="submit" class="login-sect__form-btn">
+              <span>Enter demo</span>
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </button>
+            <p class="login-message" role="alert" aria-live="polite"></p>
+          </form>
+
+          <div class="login-demo-card">
+            <span class="login-demo-card__icon"><i class="fa-solid fa-key" aria-hidden="true"></i></span>
+            <div>
+              <span class="login-demo-card__label">Demo credentials</span>
+              <strong>admin@gmail.com</strong>
+              <small>Password: administhebest3467</small>
             </div>
           </div>
-          <button type="submit" class="login-sect__form-btn">Enter Demo</button>
-        </form>
-        <div class="login-desc">
-          <p>Demo Email: admin@gmail.com</p>
-          <p>Demo key: administhebest3467</p>
+
+          <div class="login-footer">
+            <span>Built for learning and portfolio practice</span>
+            <span class="login-footer__status"><i class="fa-solid fa-circle" aria-hidden="true"></i> Demo only</span>
+          </div>
         </div>
       </section>
-      <section class="login-img">
-        <h2>Demo dashboard — no real accounts, no payments</h2>
-        <div class="login-img__profile">
-          <p class="login-img__profile-img">
-            <i class="fa-solid fa-circle-user"></i>
-          </p>
-          <p>@ashirovsherzod</p>
+
+      <section class="login-visual" aria-label="Dashly dashboard preview">
+        <div class="visual-orb visual-orb--one"></div>
+        <div class="visual-orb visual-orb--two"></div>
+        <div class="visual-content">
+          <div class="visual-label"><span></span> Dashly / Admin workspace</div>
+          <h2>Make every customer interaction feel <em>clearer.</em></h2>
+          <p>Explore a focused admin experience designed to keep the important details close at hand.</p>
+
+          <div class="visual-preview">
+            <div class="visual-preview__topbar">
+              <div class="visual-preview__dots"><span></span><span></span><span></span></div>
+              <span>Workspace overview</span>
+              <i class="fa-regular fa-bell" aria-hidden="true"></i>
+            </div>
+            <div class="visual-preview__heading">
+              <div>
+                <small>Customer directory</small>
+                <strong>Users management</strong>
+              </div>
+              <span><i class="fa-solid fa-plus" aria-hidden="true"></i> Add customer</span>
+            </div>
+            <div class="visual-preview__stats">
+              <div><span class="preview-icon preview-icon--purple"><i class="fa-solid fa-users" aria-hidden="true"></i></span><small>Visible users</small><strong>24</strong></div>
+              <div><span class="preview-icon preview-icon--green"><i class="fa-solid fa-user-check" aria-hidden="true"></i></span><small>Active users</small><strong>18</strong></div>
+              <div><span class="preview-icon preview-icon--blue"><i class="fa-solid fa-earth-americas" aria-hidden="true"></i></span><small>Countries</small><strong>09</strong></div>
+            </div>
+            <div class="visual-preview__table">
+              <div><span class="preview-avatar">PH</span><span>Pedro Hauck III</span><b>Active</b></div>
+              <div><span class="preview-avatar preview-avatar--orange">MS</span><span>Maria Stone</span><b>Active</b></div>
+              <div><span class="preview-avatar preview-avatar--blue">JK</span><span>James Kim</span><b class="is-muted">Review</b></div>
+            </div>
+          </div>
+
+          <div class="visual-caption">
+            <span class="visual-caption__avatar">AS</span>
+            <div>
+              <strong>Designed by Ashirov Sherzod</strong>
+              <span>A small project with a polished product feel.</span>
+            </div>
+          </div>
         </div>
       </section>
     </main>
-    <script type="module" src="./js/script.js"></script>
+    <script type="module" src="./js/script.js?v=2"></script>
   </body>
 </html>
