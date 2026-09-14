@@ -125,4 +125,4 @@ The browser command refreshes the screenshots in `assets/images/` and writes a l
 
 The existing Vercel project is linked to this repository. A push to a feature branch creates a preview deployment; the project's production branch controls the public demo. See [Vercel project configuration](https://vercel.com/docs/project-configuration) for the build and output settings.
 
-Vercel builds use the deployment's `VERCEL_URL` for absolute social-preview and canonical URLs. Set `SITE_URL` to an HTTPS deployment URL to override it or build for another host. This project has no backend, secret environment variables or paid runtime dependencies.
+Sharing metadata uses the public demo domain, so image previews remain accessible without a Vercel account. Set `SITE_URL` to a public HTTPS URL to override it or build for another host. This project has no backend, secret environment variables or paid runtime dependencies.

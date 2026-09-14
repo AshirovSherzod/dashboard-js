@@ -7,7 +7,9 @@ await mkdir(out, { recursive: true });
 for (const entry of ['index.html', 'css', 'js', 'pages', 'assets']) await cp(path.join(root, entry), path.join(out, entry), { recursive: true });
 const preview = await stat(path.join(out, 'assets/images/social-preview.png'));
 if (!preview.size) throw new Error('Generate the social preview with npm run test:browser before building.');
-const siteURL = process.env.SITE_URL || (process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : '');
+// Keep sharing metadata on the public domain: individual Vercel deployment URLs
+// may require authentication even when the production alias is publicly visible.
+const siteURL = process.env.SITE_URL || '';
 if (siteURL) {
   const url = new URL(siteURL.endsWith('/') ? siteURL : siteURL + '/');
   if (url.protocol !== 'https:') throw new Error('SITE_URL must be an HTTPS URL.');
