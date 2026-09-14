@@ -1,248 +1,106 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f6f7fb" />
-    <title>Users · Dashboard</title>
-    <link rel="icon" href="../assets/images/tab-icon.png" type="image/png" />
-    <link rel="stylesheet" href="../css/dashboard.css?v=3" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-
-  <body>
-    <aside class="sidebar" aria-label="Main navigation">
-      <div class="sidebar-brand">
-        <span class="brand-mark"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
-        <div>
-          <strong>Dashly</strong>
-          <span>Admin workspace</span>
-        </div>
-      </div>
-
-      <div class="sidebar-section-label">Workspace</div>
-      <nav class="sidebar-pages">
-        <button type="button" class="sidebar-pages__users is-active">
-          <i class="fa-solid fa-users" aria-hidden="true"></i>
-          <span>Users</span>
-          <small>Live</small>
-        </button>
-      </nav>
-
-      <div class="sidebar-bottom">
-        <div class="sidebar-help">
-          <span class="help-icon"><i class="fa-regular fa-circle-question" aria-hidden="true"></i></span>
-          <div>
-            <strong>Need help?</strong>
-            <span>Check the docs</span>
-          </div>
-        </div>
-        <button type="button" class="sidebar-mode" aria-label="Toggle dark mode">
-          <span><i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i> Appearance</span>
-          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-        </button>
-      </div>
-    </aside>
-
-    <div class="sidebar-backdrop" aria-hidden="true"></div>
-
-    <main>
-      <header class="topbar">
-        <div class="topbar-heading">
-          <button type="button" class="mobile-menu" aria-label="Open navigation" aria-expanded="false">
-            <i class="fa-solid fa-bars" aria-hidden="true"></i>
-          </button>
-          <div>
-            <span class="eyebrow">Workspace overview</span>
-            <h1>Users management</h1>
-            <p>Manage your customers and keep your workspace organized.</p>
-          </div>
-        </div>
-        <div class="topbar-actions">
-          <span class="current-date"></span>
-          <div class="notification-wrap">
-            <button type="button" class="icon-button notification-button" aria-label="Notifications" aria-expanded="false">
-              <i class="fa-regular fa-bell" aria-hidden="true"></i>
-              <span class="notification-dot"></span>
-            </button>
-            <div class="notification-popover" hidden>
-              <strong>You're all caught up</strong>
-              <span>No new notifications for this demo.</span>
-            </div>
-          </div>
-          <div class="profile-wrap">
-            <button type="button" class="admin-profile" aria-label="Open admin profile" aria-expanded="false">
-              <span class="admin-avatar">A</span>
-              <span class="admin-profile__copy">
-                <strong>Admin</strong>
-                <span>Administrator</span>
-              </span>
-              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-            </button>
-            <div class="profile-popover" hidden>
-              <span class="profile-popover__label">Demo account</span>
-              <strong>Admin workspace</strong>
-              <span class="profile-popover__hint">This dashboard uses mock API data.</span>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <section class="stats-grid" aria-label="Users overview">
-        <article class="stat-card">
-          <div class="stat-card__top">
-            <span class="stat-icon stat-icon--purple"><i class="fa-solid fa-users" aria-hidden="true"></i></span>
-            <span class="stat-trend"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i> Live</span>
-          </div>
-          <span class="stat-label">Visible users</span>
-          <strong class="stat-value" id="visible-users">—</strong>
-          <span class="stat-caption">Current result set</span>
-        </article>
-        <article class="stat-card">
-          <div class="stat-card__top">
-            <span class="stat-icon stat-icon--green"><i class="fa-solid fa-user-check" aria-hidden="true"></i></span>
-            <span class="stat-trend stat-trend--green">Active</span>
-          </div>
-          <span class="stat-label">Active users</span>
-          <strong class="stat-value" id="active-users">—</strong>
-          <span class="stat-caption">Ready to engage</span>
-        </article>
-        <article class="stat-card">
-          <div class="stat-card__top">
-            <span class="stat-icon stat-icon--orange"><i class="fa-solid fa-user-clock" aria-hidden="true"></i></span>
-            <span class="stat-trend stat-trend--orange">Review</span>
-          </div>
-          <span class="stat-label">Inactive users</span>
-          <strong class="stat-value" id="inactive-users">—</strong>
-          <span class="stat-caption">May need attention</span>
-        </article>
-        <article class="stat-card">
-          <div class="stat-card__top">
-            <span class="stat-icon stat-icon--blue"><i class="fa-solid fa-earth-americas" aria-hidden="true"></i></span>
-            <span class="stat-trend stat-trend--blue">Global</span>
-          </div>
-          <span class="stat-label">Countries reached</span>
-          <strong class="stat-value" id="country-count">—</strong>
-          <span class="stat-caption">Across visible users</span>
-        </article>
-      </section>
-
-      <section class="content-card" aria-labelledby="customers-title">
-        <div class="content-card__header">
-          <div>
-            <span class="eyebrow">Directory</span>
-            <h2 id="customers-title">Customer directory</h2>
-            <p>Review, update and manage customer access.</p>
-          </div>
-          <button type="button" class="secondary-button add-customer">
-            <i class="fa-solid fa-plus" aria-hidden="true"></i>
-            Add customer
-          </button>
-        </div>
-
-        <div class="table-toolbar">
-          <div class="toolbar-summary">
-            <span class="table-status-dot"></span>
-            <span>All customers</span>
-            <span class="toolbar-divider"></span>
-            <span class="result-count">Live data</span>
-          </div>
-          <form class="search-form" action="">
-            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-            <input class="search-input" aria-label="Search users by name" placeholder="Search by name..." type="search" />
-            <button type="submit" aria-label="Search users">Search</button>
-          </form>
-        </div>
-
-        <p class="table-message" role="status" aria-live="polite"></p>
-        <div class="table-scroll">
-          <table>
-            <caption class="sr-only">Customer directory</caption>
-            <thead>
-              <tr>
-                <th scope="col">Customer</th>
-                <th scope="col">Phone number</th>
-                <th scope="col">Email</th>
-                <th scope="col">Country</th>
-                <th scope="col">Status</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-          <div class="empty-state" hidden>
-            <span class="empty-state__icon"><i class="fa-solid fa-users-slash" aria-hidden="true"></i></span>
-            <h3 class="empty-title">No customers found</h3>
-            <p class="empty-description">Try a different search or clear the current filter.</p>
-            <button type="button" class="empty-reset">Clear search</button>
-          </div>
-        </div>
-
-        <div class="table-footer">
-          <span class="footer-note">Showing up to</span>
-          <form class="limit-form" action="">
-            <label for="limit">Rows</label>
-            <input class="limit-input" id="limit" type="number" min="1" max="100" value="10" />
-            <button type="submit">Apply</button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <div class="modal edit-modal" aria-hidden="true">
-      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="edit-title">
-        <div class="modal-header">
-          <div>
-            <span class="eyebrow">Customer directory</span>
-            <h2 id="edit-title">Edit customer</h2>
-          </div>
-          <button type="button" class="modal-close" aria-label="Close edit dialog"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-        </div>
-        <form class="edit-form">
-          <input type="hidden" class="edit-id" />
-          <div class="form-field">
-            <label for="edit-name">Customer name</label>
-            <input id="edit-name" class="edit-name" type="text" autocomplete="name" placeholder="Enter customer name" required />
-          </div>
-          <div class="form-field">
-            <label for="edit-phone">Phone number</label>
-            <input id="edit-phone" class="edit-phone" type="tel" autocomplete="tel" placeholder="Enter phone number" required />
-          </div>
-          <div class="form-field">
-            <label for="edit-email">Email</label>
-            <input id="edit-email" class="edit-email" type="email" autocomplete="email" placeholder="Enter email address" required />
-          </div>
-          <div class="form-field">
-            <label for="edit-country">Country</label>
-            <input id="edit-country" class="edit-country" type="text" autocomplete="country-name" placeholder="Enter country" required />
-          </div>
-          <div class="modal-actions">
-            <button type="button" class="modal-cancel">Cancel</button>
-            <button type="submit" class="modal-save"><i class="fa-solid fa-check" aria-hidden="true"></i> <span class="modal-save-label">Save changes</span></button>
-          </div>
-        </form>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6f7fb" />
+  <meta name="description" content="Explore Dashly: a complete customer workspace with search, filters, insights and a personal demo directory." />
+  <title>Customers · Dashly</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <script src="../js/theme.js"></script>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+<body>
+  <a class="skip-link" href="#directory">Skip to customer directory</a>
+  <aside class="sidebar" id="navigation" aria-label="Main navigation">
+    <a class="brand" href="../index.html"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#layers"></use></svg></span><span><strong>Dashly<span class="brand-dot">.</span></strong><small>Customer workspace</small></span></a>
+    <div class="sidebar-label">Workspace</div>
+    <nav><a class="nav-item is-active" href="#directory" aria-current="page"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#users"></use></svg><span>Customers</span><span class="nav-count">40</span></a></nav>
+    <div class="sidebar-bottom">
+      <div class="workspace-note"><span class="note-icon"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"></use></svg></span><strong>A space to explore</strong><p>Your changes stay in this browser. Start fresh anytime.</p><button class="text-button reset-demo" type="button"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#reset"></use></svg> Reset demo</button></div>
+      <button class="sidebar-link help-button" type="button"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#help"></use></svg> Demo guide <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#chevron"></use></svg></button>
+      <button class="sidebar-link theme-toggle" type="button" aria-label="Switch to dark appearance"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#moon"></use></svg><span>Dark appearance</span></button>
+      <a class="sidebar-credit" href="https://github.com/AshirovSherzod/dashboard-js" target="_blank" rel="noopener noreferrer">Built by Ashirov Sherzod <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#arrow"></use></svg></a>
     </div>
-
-    <div class="modal confirm-modal" aria-hidden="true">
-      <div class="modal-content confirm-content" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
-        <span class="confirm-icon"><i class="fa-solid fa-trash" aria-hidden="true"></i></span>
-        <h2 id="confirm-title">Delete customer?</h2>
-        <p class="confirm-message">This action cannot be undone.</p>
-        <div class="modal-actions">
-          <button type="button" class="confirm-cancel">Cancel</button>
-          <button type="button" class="confirm-delete"><i class="fa-solid fa-trash" aria-hidden="true"></i> Delete customer</button>
+  </aside>
+  <button class="sidebar-backdrop" type="button" aria-label="Close navigation" tabindex="-1" hidden></button>
+  <main>
+    <header class="topbar">
+      <div class="heading-group">
+        <button class="icon-button mobile-menu" type="button" aria-label="Open navigation" aria-controls="navigation" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#menu"></use></svg></button>
+        <div><div class="eyebrow">Your workspace, at a glance</div><h1>Customers</h1><p>A little clarity for every customer relationship.</p></div>
+      </div>
+      <div class="topbar-actions">
+        <time class="current-date"></time>
+        <div class="popover-wrap">
+          <button class="icon-button activity-toggle" type="button" aria-label="Recent activity" aria-controls="activity-popover" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#bell"></use></svg><span class="notification-dot" hidden></span></button>
+          <section class="popover activity-popover" id="activity-popover" aria-label="Recent activity" hidden><strong>Recent activity</strong><p class="popover-intro">Changes from your demo workspace.</p><ul class="activity-list"></ul></section>
+        </div>
+        <div class="popover-wrap">
+          <button class="profile-toggle" type="button" aria-expanded="false" aria-controls="profile-popover" aria-label="Open demo profile"><span class="admin-avatar">AS</span><span class="profile-copy"><strong>Alex Smith</strong><small>Demo administrator</small></span><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#chevron"></use></svg></button>
+          <section class="popover profile-popover" id="profile-popover" aria-label="Demo profile" hidden><strong>Demo administrator</strong><p>Make yourself at home.</p><a class="exit-demo" href="../index.html"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#exit"></use></svg> Exit demo</a></section>
         </div>
       </div>
-    </div>
-
-    <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
-    <script type="module" src="../js/dashboard.js?v=3"></script>
-  </body>
+    </header>
+    <div class="demo-banner"><span class="demo-pill"><span></span>Demo workspace</span><p>40 sample customers. Your own space to try things out.</p><button class="text-button help-button" type="button">Take a quick tour <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#arrow"></use></svg></button></div>
+    <p class="storage-notice" role="status" hidden></p>
+    <section class="stats-grid" aria-label="Overview of all customers">
+      <article class="stat-card"><span class="stat-icon purple"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#users"></use></svg></span><div><span class="stat-label">Total customers</span><strong class="stat-value" id="total-customers">—</strong><small>Across your workspace</small></div></article>
+      <article class="stat-card"><span class="stat-icon green"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check-user"></use></svg></span><div><span class="stat-label">Active customers</span><strong class="stat-value" id="active-customers">—</strong><small id="active-ratio">Ready to connect</small></div></article>
+      <article class="stat-card"><span class="stat-icon orange"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#clock"></use></svg></span><div><span class="stat-label">Inactive customers</span><strong class="stat-value" id="inactive-customers">—</strong><small>Room to reconnect</small></div></article>
+      <article class="stat-card"><span class="stat-icon blue"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#globe"></use></svg></span><div><span class="stat-label">Countries</span><strong class="stat-value" id="country-count">—</strong><small>A world of connections</small></div></article>
+    </section>
+    <section class="content-card" id="directory" aria-labelledby="directory-title" tabindex="-1">
+      <div class="card-heading"><div><div class="title-line"><h2 id="directory-title">Customer directory</h2><span class="count-badge">40 customers</span></div><p>Good relationships start with the details.</p></div><div class="header-buttons"><button class="button button-secondary export-button" type="button"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"></use></svg><span>Export CSV</span></button><button class="button button-primary add-customer" type="button"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#plus"></use></svg><span>Add customer</span></button></div></div>
+      <form class="filter-bar" role="search">
+        <div class="search-field"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#search"></use></svg><label class="sr-only" for="search">Search customers by name or email</label><input id="search" type="search" placeholder="Search by name or email…" autocomplete="off" /></div>
+        <div class="filter-select"><label for="status-filter">Status</label><select id="status-filter"><option value="all">All statuses</option><option value="active">Active</option><option value="inactive">Inactive</option></select></div>
+        <div class="filter-select"><label for="country-filter">Country</label><select id="country-filter"><option value="">All countries</option></select></div>
+        <button type="button" class="clear-filters text-button" hidden><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#close"></use></svg> Clear filters</button>
+      </form>
+      <div class="results-toolbar"><p class="result-count" role="status" aria-live="polite" aria-atomic="true">Loading customers…</p><div class="sort-field"><label for="sort-order">Sort by</label><select id="sort-order"><option value="full_name:asc">Name: A–Z</option><option value="full_name:desc">Name: Z–A</option><option value="email:asc">Email: A–Z</option><option value="email:desc">Email: Z–A</option><option value="phone_number:asc">Phone: ascending</option><option value="phone_number:desc">Phone: descending</option><option value="country:asc">Country: A–Z</option><option value="country:desc">Country: Z–A</option><option value="isActive:desc">Active first</option><option value="isActive:asc">Inactive first</option><option value="createdAt:desc">Newest first</option><option value="createdAt:asc">Oldest first</option></select></div></div>
+      <div class="table-scroll">
+        <table class="customer-table"><caption class="sr-only">Customers matching your search and filters</caption><thead><tr>
+          <th scope="col" aria-sort="ascending"><button type="button" class="column-sort" data-sort="full_name">Customer<svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sort"></use></svg></button></th><th scope="col" aria-sort="none"><button type="button" class="column-sort" data-sort="phone_number">Phone number<svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sort"></use></svg></button></th><th scope="col" aria-sort="none"><button type="button" class="column-sort" data-sort="email">Email address<svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sort"></use></svg></button></th><th scope="col" aria-sort="none"><button type="button" class="column-sort" data-sort="country">Country<svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sort"></use></svg></button></th><th scope="col" aria-sort="none"><button type="button" class="column-sort" data-sort="isActive">Status<svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sort"></use></svg></button></th>
+          <th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody></tbody></table>
+      </div>
+      <div class="mobile-customer-list" aria-label="Customers"></div>
+      <div class="empty-state" hidden><span class="empty-icon"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#search"></use></svg></span><h3>No customers found</h3><p>Try a different name, email or filter.</p><button class="button button-secondary empty-action" type="button">Clear filters</button></div>
+      <footer class="table-footer"><div class="page-size-field"><label for="page-size">Rows per page</label><select id="page-size"><option>10</option><option>20</option><option>50</option></select></div><nav class="pagination" aria-label="Customer pages"><button type="button" class="button button-secondary previous-page"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#chevron"></use></svg><span>Previous</span></button><span class="page-indicator">Page 1 of 1</span><button type="button" class="button button-secondary next-page"><span>Next</span><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#chevron"></use></svg></button></nav></footer>
+    </section>
+    <footer class="workspace-footer"><span>Thoughtful tools. Clearer connections.</span><span>Dashly · Portfolio demo</span></footer>
+  </main>
+  <dialog class="edit-dialog" aria-labelledby="edit-title">
+    <div class="dialog-heading"><div><span class="eyebrow">Customer directory</span><h2 id="edit-title">Add customer</h2></div><button class="icon-button" data-close type="button" aria-label="Close customer form"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#close"></use></svg></button></div>
+    <p class="dialog-description">Keep the essentials in one place. All fields except company are required.</p>
+    <form class="customer-form" novalidate>
+      <input name="id" type="hidden" />
+      <div class="form-grid"><div class="form-field "><label for="field-full_name">Customer name</label><input id="field-full_name" name="full_name" type="text" autocomplete="name" placeholder="Alex Morgan" maxlength="80" required  aria-describedby="error-full_name" /><span class="field-error" id="error-full_name"></span></div><div class="form-field "><label for="field-email">Email address</label><input id="field-email" name="email" type="email" autocomplete="email" placeholder="alex@example.com" maxlength="120" required  aria-describedby="error-email" /><span class="field-error" id="error-email"></span></div><div class="form-field "><label for="field-phone_number">Phone number</label><input id="field-phone_number" name="phone_number" type="tel" autocomplete="tel" placeholder="+1 202 555 0100" maxlength="30" required  aria-describedby="error-phone_number" /><span class="field-error" id="error-phone_number"></span></div><div class="form-field "><label for="field-country">Country</label><input id="field-country" name="country" type="text" autocomplete="country-name" placeholder="United States" maxlength="60" required list="country-options" aria-describedby="error-country" /><span class="field-error" id="error-country"></span></div><div class="form-field full-width"><label for="field-company">Company (optional)</label><input id="field-company" name="company" type="text" autocomplete="organization" placeholder="Northstar Studio" maxlength="100"   aria-describedby="error-company" /><span class="field-error" id="error-company"></span></div></div>
+      <datalist id="country-options"></datalist>
+      <p class="form-error" role="alert"></p>
+      <div class="dialog-actions"><button class="button button-secondary" data-close type="button">Cancel</button><button class="button button-primary save-customer" type="submit"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check"></use></svg><span>Add customer</span></button></div>
+    </form>
+  </dialog>
+  <dialog class="detail-dialog" aria-labelledby="detail-name">
+    <div class="dialog-heading"><span class="eyebrow">Customer profile</span><button class="icon-button" data-close type="button" aria-label="Close customer details"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#close"></use></svg></button></div>
+    <div class="detail-hero"><span class="customer-avatar detail-avatar"></span><h2 id="detail-name"></h2><p class="detail-company"></p><span class="status-badge detail-status"></span></div>
+    <dl class="detail-fields"></dl><div class="detail-actions"><button class="button button-secondary detail-status-button" type="button"></button><button class="button button-primary detail-edit" type="button"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#edit"></use></svg> Edit customer</button></div>
+  </dialog>
+  <dialog class="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+    <div class="confirm-icon"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trash"></use></svg></div><h2 id="confirm-title">Delete customer?</h2><p id="confirm-message"></p>
+    <p class="confirm-error" role="alert"></p>
+    <div class="dialog-actions"><button class="button button-secondary" data-close type="button" autofocus>Cancel</button><button class="button button-danger confirm-action" type="button">Delete customer</button></div>
+  </dialog>
+  <dialog class="help-dialog" aria-labelledby="help-title">
+    <div class="dialog-heading"><div><span class="eyebrow">Make yourself at home</span><h2 id="help-title">Your two-minute demo guide</h2></div><button class="icon-button" data-close type="button" aria-label="Close demo guide"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#close"></use></svg></button></div>
+    <p>Explore a complete customer workflow with 40 fictional customers. Everything you change belongs to your browser.</p>
+    <ol class="tour-steps"><li><strong>Find the right person</strong><p>Search a name or email, combine country and status filters, and sort the results.</p></li><li><strong>Get to know a customer</strong><p>Select a customer name to see their profile, company and contact details.</p></li><li><strong>Make it yours</strong><p>Add a customer, edit their information or change their status. Your changes survive a page refresh.</p></li><li><strong>Take your results with you</strong><p>Export CSV includes every matching customer, across all result pages, in the current sort order.</p></li></ol>
+    <div class="help-note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#reset"></use></svg><p><strong>A fresh start, anytime.</strong> Reset demo restores the original samples in this browser. Exit demo returns to the welcome page without clearing your work.</p></div>
+    <div class="dialog-actions"><button type="button" class="button button-primary" data-close>Start exploring <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#arrow"></use></svg></button></div>
+  </dialog>
+  <div class="toast-region" aria-live="polite" aria-relevant="additions"></div>
+  <noscript><div class="noscript-note">Enable JavaScript to explore the customer directory.</div></noscript>
+  <script type="module" src="../js/dashboard.js"></script>
+</body>
 </html>

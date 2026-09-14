@@ -3,73 +3,137 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demo Dashboard Preview</title>
-    <link rel="icon" href="./assets/images/tab-icon.png" type="image/png" />
+    <meta name="theme-color" content="#11141c" />
+    <title>Dashly — A clearer customer workspace</title>
+    <meta name="description" content="A thoughtful customer workspace. Explore 40 sample customers, powerful filters, customer profiles and CSV export. Try the interactive demo in one click." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dashly — A clearer customer workspace" />
+    <meta property="og:description" content="Meet your next customer workspace. Search, organize and connect in an interactive demo." />
+    <meta property="og:image" content="https://dashboard-js-7le5.vercel.app/assets/images/social-preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Dashly customer workspace with a sample directory and customer overview" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <meta property="og:url" content="https://dashboard-js-7le5.vercel.app/" />
+    <link rel="canonical" href="https://dashboard-js-7le5.vercel.app/" />
   </head>
 
-  <body>
-    <main class="login">
-      <section class="login-sect">
-        <div class="login-sect__title">
-          <h1>Welcome Back</h1>
-          <p>Demo Sign In</p>
-        </div>
-        <form class="login-sect__form" action="" novalidate>
-          <div class="login-sect__form-username">
-            <label for="username">Email</label>
-            <input
-              id="username"
-              name="username"
-              autocomplete="username"
-              class="username-input"
-              placeholder="Enter username or email"
-              type="email"
-              required
-            />
+  <body class="login-page">
+    <main class="login-shell">
+      <section class="login-panel" aria-labelledby="login-title">
+        <div class="login-panel__content">
+          <a class="login-brand" href="./index.html" aria-label="Dashly home">
+            <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#layers"></use></svg></span>
+            <span class="login-brand__copy">
+              <strong>Dashly</strong>
+              <span>Customer workspace</span>
+            </span>
+          </a>
+
+          <div class="login-heading">
+            <span class="eyebrow">A little clarity goes a long way</span>
+            <h1 id="login-title">Your customers.<br />A clearer picture.</h1>
+            <p>A thoughtful workspace for the people behind your business. Explore, organize and make it yours.</p>
           </div>
-          <div class="login-sect__form-password">
-            <label for="">Demo Password</label>
-            <div class="login-sect__form-password__input">
-              <input
-                id="password"
-                name="password"
-                autocomplete="current-password"
-                placeholder="Enter Password"
-                type="password"
-                class="password-input"
-                required
-              />
-              <button
-                type="button"
-                class="password-btn"
-                aria-label="Show password"
-              >
-                <i class="fa-regular fa-eye"></i>
-              </button>
+
+          <button class="try-demo" type="button"><span>Try demo</span><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#arrow"></use></svg></button>
+          <p class="demo-entry-hint">One click. 40 sample customers. Make yourself at home.</p>
+          <details class="credential-details"><summary>Or explore the demo sign-in form</summary>
+          <form class="login-sect__form" action="" novalidate>
+            <div class="login-field">
+              <label for="username">Email address</label>
+              <div class="login-input-wrap">
+                <svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#mail"></use></svg>
+                <input id="username" name="username" autocomplete="username" class="username-input" placeholder="admin@gmail.com" type="email" required />
+              </div>
+            </div>
+
+            <div class="login-field">
+              <div class="login-field__label-row">
+                <label for="password">Password</label>
+                <span>Demo access</span>
+              </div>
+              <div class="login-input-wrap">
+                <svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#lock"></use></svg>
+                <input id="password" name="password" autocomplete="current-password" placeholder="Enter your password" type="password" class="password-input" required />
+                <button type="button" class="password-btn" aria-label="Show password">
+                  <svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#eye"></use></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="login-form-meta">
+              <span><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#info"></use></svg> Demo sign-in</span>
+              <span>Sample account</span>
+            </div>
+
+            <button type="submit" class="login-sect__form-btn">
+              <span>Sign in to demo</span>
+              <svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#arrow"></use></svg>
+            </button>
+            <p class="login-message" role="alert" aria-live="polite"></p>
+          </form>
+
+          <div class="login-demo-card">
+            <span class="login-demo-card__icon"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#lock"></use></svg></span>
+            <div>
+              <span class="login-demo-card__label">Demo credentials</span>
+              <strong>admin@gmail.com</strong>
+              <small>Password: administhebest3467</small>
             </div>
           </div>
-          <button type="submit" class="login-sect__form-btn">Enter Demo</button>
-        </form>
-        <div class="login-desc">
-          <p>Demo Email: admin@gmail.com</p>
-          <p>Demo key: administhebest3467</p>
+
+          </details>
+          <div class="login-footer">
+            <span>Made to explore. Designed with care.</span>
+            <span class="login-footer__status"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#info"></use></svg> Demo only</span>
+          </div>
         </div>
       </section>
-      <section class="login-img">
-        <h2>Demo dashboard — no real accounts, no payments</h2>
-        <div class="login-img__profile">
-          <p class="login-img__profile-img">
-            <i class="fa-solid fa-circle-user"></i>
-          </p>
-          <p>@ashirovsherzod</p>
+
+      <section class="login-visual" aria-label="Dashly dashboard preview">
+        <div class="visual-orb visual-orb--one"></div>
+        <div class="visual-orb visual-orb--two"></div>
+        <div class="visual-content">
+          <div class="visual-label"><span></span> Dashly / Customer workspace</div>
+          <h2>Make every customer interaction feel <em>clearer.</em></h2>
+          <p>Explore a focused admin experience designed to keep the important details close at hand.</p>
+
+          <div class="visual-preview">
+            <div class="visual-preview__topbar">
+              <div class="visual-preview__dots"><span></span><span></span><span></span></div>
+              <span>Workspace overview</span>
+              <svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#bell"></use></svg>
+            </div>
+            <div class="visual-preview__heading">
+              <div>
+                <small>Customer directory</small>
+                <strong>Customer directory</strong>
+              </div>
+              <span><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#plus"></use></svg> Add customer</span>
+            </div>
+            <div class="visual-preview__stats">
+              <div><span class="preview-icon preview-icon--purple"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#users"></use></svg></span><small>Customers</small><strong>40</strong></div>
+              <div><span class="preview-icon preview-icon--green"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#check-user"></use></svg></span><small>Active</small><strong>30</strong></div>
+              <div><span class="preview-icon preview-icon--blue"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#globe"></use></svg></span><small>Countries</small><strong>13</strong></div>
+            </div>
+            <div class="visual-preview__table">
+              <div><span class="preview-avatar">AM</span><span>Alex Morgan</span><b>Active</b></div>
+              <div><span class="preview-avatar preview-avatar--orange">MS</span><span>Maria Stone</span><b>Active</b></div>
+              <div><span class="preview-avatar preview-avatar--blue">JK</span><span>James Kim</span><b class="is-muted">Inactive</b></div>
+            </div>
+          </div>
+
+          <div class="visual-caption">
+            <span class="visual-caption__avatar">AS</span>
+            <div>
+              <strong>Designed by Ashirov Sherzod</strong>
+              <span>Thoughtful tools. Clearer connections.</span>
+            </div>
+          </div>
         </div>
       </section>
     </main>
