@@ -1,66 +1,94 @@
-const API_URL = "https://686519fe5b5d8d03397fb476.mockapi.io/ap/v1/users";
+import { createSeedCustomers } from './seed.js';
+import { validateCustomer } from './customers.js';
 
-async function request(url, options = {}) {
-  const requestOptions = { ...options };
-  const method = String(requestOptions.method ?? "GET").toUpperCase();
+export const STORAGE_KEY = 'dashly.customers.v1';
+let memory;
+let notice = '';
+let memoryOnly = false;
 
-  if (method === "GET") {
-    requestOptions.cache = "no-store";
+function freshState() {
+  return { version: 1, customers: createSeedCustomers(), activity: [] };
+}
+function validState(value) {
+  return value?.version === 1 && Array.isArray(value.customers)
+    && value.customers.every(c => c && ['id', 'full_name', 'email', 'phone_number', 'country'].every(key => typeof c[key] === 'string') && typeof c.isActive === 'boolean'
+      && (c.company == null || typeof c.company === 'string')
+      && (c.createdAt == null || typeof c.createdAt === 'string')
+      && (c.updatedAt == null || typeof c.updatedAt === 'string'))
+    && new Set(value.customers.map(c => c.id)).size === value.customers.length
+    && Array.isArray(value.activity)
+    && value.activity.every(item => item && typeof item.text === 'string' && typeof item.at === 'string');
+}
+function readState() {
+  if (memoryOnly) return structuredClone(memory);
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (!validState(parsed)) throw new Error('Invalid saved demo');
+      memory = parsed;
+      return structuredClone(memory);
+    }
+  } catch (error) {
+    if (error.name === 'SecurityError') {
+      memoryOnly = true;
+      notice = 'Browser storage is unavailable. Changes last until this page is closed.';
+    } else notice = 'Saved demo data could not be read. A fresh sample directory has been restored.';
   }
-
-  const response = await fetch(url, requestOptions);
-
-  if (!response.ok) {
-    throw new Error(`Request failed with status ${response.status}`);
+  memory = freshState();
+  writeState(memory);
+  return structuredClone(memory);
+}
+function writeState(state) {
+  memory = structuredClone(state);
+  if (memoryOnly) return;
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+  catch {
+    memoryOnly = true;
+    notice = 'Changes are kept for this visit only because browser storage is unavailable or full.';
   }
-
-  if (response.status === 204) {
-    return null;
-  }
-
-  return response.json();
 }
-
-export async function getUsers(name = "", limit = 10) {
-  const parsedLimit = Number.parseInt(limit, 10);
-  const safeLimit = Number.isFinite(parsedLimit)
-    ? Math.min(Math.max(parsedLimit, 1), 100)
-    : 10;
-  const params = new URLSearchParams({
-    page: "1",
-    limit: String(safeLimit),
-    full_name: name,
-  });
-
-  return request(`${API_URL}?${params.toString()}`);
+function record(state, text) {
+  state.activity.unshift({ text, at: new Date().toISOString() });
+  state.activity = state.activity.slice(0, 12);
+  writeState(state);
 }
-
-export function postUsers(user) {
-  return request(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user),
-  });
+export async function getCustomers() { return readState(); }
+export function getStorageNotice() { return notice; }
+export async function saveCustomer(input, id = '') {
+  const state = readState();
+  const existing = id ? state.customers.find(c => c.id === id) : null;
+  if (id && !existing) throw new Error('This customer no longer exists. Refresh the directory and try again.');
+  const { customer, errors } = validateCustomer(input, state.customers, id);
+  if (Object.keys(errors).length) throw new Error(Object.values(errors)[0]);
+  const saved = {
+    ...existing, ...customer, id: existing?.id ?? crypto.randomUUID(),
+    isActive: existing?.isActive ?? true,
+    createdAt: existing?.createdAt ?? new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+  if (existing) state.customers[state.customers.indexOf(existing)] = saved;
+  else state.customers.unshift(saved);
+  record(state, saved.full_name + (existing ? ' was updated.' : ' was added to the directory.'));
+  return structuredClone(saved);
 }
-
-export function deleteUsers(id) {
-  return request(`${API_URL}/${encodeURIComponent(id)}`, {
-    method: "DELETE",
-  });
+export async function setCustomerStatus(id, isActive) {
+  const state = readState();
+  const customer = state.customers.find(c => c.id === id);
+  if (!customer) throw new Error('This customer no longer exists.');
+  customer.isActive = Boolean(isActive);
+  customer.updatedAt = new Date().toISOString();
+  record(state, customer.full_name + ' was marked ' + (customer.isActive ? 'active.' : 'inactive.'));
 }
-
-export function putUsers(editedUser, id) {
-  return request(`${API_URL}/${encodeURIComponent(id)}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(editedUser),
-  });
+export async function deleteCustomer(id) {
+  const state = readState();
+  const customer = state.customers.find(c => c.id === id);
+  if (!customer) throw new Error('This customer has already been deleted.');
+  state.customers = state.customers.filter(c => c.id !== id);
+  record(state, customer.full_name + ' was deleted.');
 }
-
-export function updateUserStatus(user, id) {
-  return request(`${API_URL}/${encodeURIComponent(id)}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user),
-  });
+export async function resetDemo() {
+  const state = freshState();
+  record(state, 'Demo reset. The 40 sample customers are ready to explore.');
+  return structuredClone(state);
 }

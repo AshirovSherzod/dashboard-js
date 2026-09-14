@@ -1,0 +1,31 @@
+:root {
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-synthesis: none;
+  --bg: #f6f7fb; --surface: #fff; --surface-soft: #f8f9fc; --surface-hover: #f1f0fa;
+  --text: #20283d; --muted: #647089; --border: #e5e8f0;
+  --primary: #6756df; --primary-hover: #5341cb; --primary-soft: #eeebff;
+  --green: #14775b; --green-soft: #e5f6ee; --danger: #be3c4c; --danger-soft: #fff0f2;
+  --orange: #9c651a; --orange-soft: #fff3df; --blue: #346cbc; --blue-soft: #eaf2ff;
+  --shadow: 0 4px 24px rgb(30 40 80 / 4%); color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #11141c; --surface: #191e29; --surface-soft: #202634; --surface-hover: #272c3e;
+  --text: #f0f2fa; --muted: #acb5ca; --border: #303748; --primary: #a599ff;
+  --primary-hover: #b4aaff; --primary-soft: #302950; --green: #70d6af; --green-soft: #173c32;
+  --danger: #ff9aaa; --danger-soft: #41242e; --orange: #efbe73; --orange-soft: #403320;
+  --blue: #93bcff; --blue-soft: #23364d; --shadow: 0 4px 24px rgb(0 0 0 / 10%); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: var(--bg); color: var(--text); font: 14px/1.5 "Segoe UI", system-ui, sans-serif; }
+button, input, select { font: inherit; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .5; }
+a { color: var(--primary); }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+.icon { display: inline-block; width: 20px; height: 20px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; top: 8px; left: 8px; z-index: 100; padding: 12px 18px; background: var(--surface); border-radius: 8px; transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
